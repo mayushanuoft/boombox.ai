@@ -6,10 +6,13 @@ export const BoomBox = () => {
     return (
         <div id="container">
             <Background />
-            <Screen />
+            <Screen songName={"On Top"} artist={"Karan Ajual"} time={"1:45"} />
             <Tape />
             <VolumeSliderBox />
             <Speaker />
+            <DialScreenDiv />
+            <Buttons />
+            <DialBox />
         </div>
     )
 }
@@ -35,7 +38,7 @@ const Background = () => {
         </div>
     );
 }
-const Screen = () => {
+const Screen = ({ songName, artist, time }) => {
     return (
         <div id="screen">
             <svg
@@ -47,6 +50,9 @@ const Screen = () => {
             >
                 <rect width="141" height="57" fill="#210537" rx="8"></rect>
             </svg>
+            <h2>{songName}</h2>
+            <h2>{artist}</h2>
+            <h1>{time}</h1>
         </div>
     );
 }
@@ -219,7 +225,6 @@ const VolumeSlider = ({ id, start }) => {
         />
     );
 };
-
 const Speaker = () => {
     const [randomInterval, setRandomInterval] = useState(0);
 
@@ -241,9 +246,7 @@ const Speaker = () => {
         </>
     );
 };
-
 const SpeakerRim = ({ id, on, randomInterval }) => {
-    console.log(randomInterval)
     return (
         <>
             <div id={id}>
@@ -264,7 +267,6 @@ const SpeakerRim = ({ id, on, randomInterval }) => {
         </>
     );
 };
-
 const SpeakerBase = ({ id, bass, randomInterval }) => {
     const [isActive, setIsActive] = useState(true);
 
@@ -305,7 +307,180 @@ const SpeakerBase = ({ id, bass, randomInterval }) => {
         </div>
     );
 };
+const DialScreenDiv = () => {
+    return (
+        <>
+            <DialScreen id={"leftDialScreen"} rotation={true} />
+            <DialScreen id={"rightDialScreen"} rotation={true} />
+        </>
+    )
+}
+const DialScreen = ({ rotation, id }) => {
+    return (
+        <>
+            <div id={id}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="106"
+                    height="63"
+                    fill="none"
+                    viewBox="0 0 106 63"
+                >
+                    <rect width="106" height="63" fill="#fff" rx="6"></rect>
+                    <rect width="98" height="55" x="4" y="4" fill="#313131" rx="6"></rect>
+                </svg>
+            </div>
+            <DialScreenDial id={id} rotation={rotation} />
+        </>
+    )
+}
+const DialScreenDial = ({ rotation, id }) => {
 
 
-export default Speaker;
+    return (
+        <div id={`${id}Dial`} className={rotation ? 'dialrotator' : ''}>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="44"
+                fill="none"
+                viewBox="0 0 15 44"
+            >
+                <path stroke="#fff" strokeWidth="3" d="M7.5 0L7.5 31"></path>
+                <circle cx="7.5" cy="36.5" r="7.5" fill="#fff"></circle>
+                <circle cx="7.5" cy="36.5" r="5.5" fill="#313131"></circle>
+            </svg>
+        </div>
+    )
+}
+const Buttons = () => {
+    return (
+        <>
+            <PlayButton />
+            <PauseButton />
+            <BackwardButton />
+            <ForwardButton />
+        </>
 
+    )
+}
+const PlayButton = () => {
+    return (
+        <div id="playButton">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="33"
+                fill="none"
+                viewBox="0 0 30 33"
+            >
+                <rect width="30" height="33" fill="#1E1E1E" rx="5"></rect>
+                <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 8H9v16h4V8zM21 8h-4v16h4V8z"
+                ></path>
+            </svg>
+        </div>
+
+    )
+}
+const PauseButton = () => {
+    return (
+        <div id="pauseButton">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="33"
+                fill="none"
+                viewBox="0 0 30 33"
+            >
+                <rect width="30" height="33" fill="#1E1E1E" rx="5"></rect>
+                <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 7l14 9-14 9V7z"
+                ></path>
+            </svg>
+        </div>
+    )
+}
+const BackwardButton = () => {
+    return (
+        <div id="backwardButton">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="33"
+                fill="none"
+                viewBox="0 0 30 33"
+            >
+                <rect width="30" height="33" fill="#1E1E1E" rx="5"></rect>
+                <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M22 23l-10-8 10-8v16zM8 22V8"
+                ></path>
+            </svg>
+        </div>
+    )
+}
+const ForwardButton = () => {
+    return (
+        <div id="forwardButton">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="33"
+                fill="none"
+                viewBox="0 0 30 33"
+            >
+                <rect width="30" height="33" fill="#1E1E1E" rx="5"></rect>
+                <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 8l10 8-10 8V8zM24 9v14"
+                ></path>
+            </svg>
+        </div>
+    )
+}
+const DialBox = () => {
+    return (
+        <>
+            <Dial id={"first"} />
+            <Dial id={"second"} />
+            <Dial id={"third"} />
+            <Dial id={"fourth"} />
+
+        </>
+    )
+}
+const Dial = ({ id }) => {
+    return (
+        <div id={id} className="dial">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="none"
+                viewBox="0 0 40 40"
+            >
+                <circle cx="20" cy="20" r="20" fill="#fff"></circle>
+                <circle cx="20" cy="20" r="20" fill="#fff"></circle>
+                <circle cx="20" cy="20" r="20" fill="#fff"></circle>
+                <circle cx="20" cy="20" r="15" fill="#313131"></circle>
+                <path stroke="#fff" strokeWidth="2" d="M20 8L20 21"></path>
+                <circle cx="20" cy="20" r="4" fill="#fff"></circle>
+            </svg>
+        </div>
+    )
+}

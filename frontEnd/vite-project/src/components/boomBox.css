@@ -108,3 +108,87 @@
 .bass-unActive {
   transform: scale(0.7);
 }
+
+#leftDialScreen {
+  position: absolute;
+  top: 86px;
+  left: 24px;
+}
+
+#rightDialScreen {
+  position: absolute;
+  top: 86px;
+  left: 150px;
+}
+#leftDialScreenDial {
+  position: absolute;
+  top: 100px;
+  left: 70px;
+  transition: transform 10s ease-in-out;
+}
+#rightDialScreenDial {
+  position: absolute;
+  top: 100px;
+  left: 195px;
+  transition: transform 10s ease-in-out;
+}
+.dialrotator {
+  transform-origin: center calc(100% - 3px);
+  height: 38px !important;
+  animation: rotateDial 10s infinite ease-in-out;
+}
+@keyframes rotateDial {
+  0% {
+    transform: rotate(-90deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+#playButton {
+  position: absolute;
+  top: 99px;
+  left: 328px;
+}
+#pauseButton {
+  position: absolute;
+  top: 99px;
+  left: 362px;
+}
+#backwardButton {
+  position: absolute;
+  top: 99px;
+  left: 399px;
+}
+#forwardButton {
+  position: absolute;
+  top: 99px;
+  left: 437px;
+}
+.dial {
+  position: absolute;
+  top: 96px;
+  left: 504px;
+}
+#second {
+  position: absolute;
+  top: 96px;
+  left: 554px;
+  transform: rotate(-90deg);
+}
+#third {
+  position: absolute;
+  top: 96px;
+  left: 602px;
+  transform: rotate(-35deg);
+}
+#fourth {
+  position: absolute;
+  top: 96px;
+  left: 653px;
+  transform: rotate(-190deg);
+}
