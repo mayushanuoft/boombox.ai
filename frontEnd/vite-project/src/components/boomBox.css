@@ -1,6 +1,8 @@
 #container {
   position: relative;
   background-color: green;
+  top: 100px;
+  left: 100px;
 }
 
 #screen {

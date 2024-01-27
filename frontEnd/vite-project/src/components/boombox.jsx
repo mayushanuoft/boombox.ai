@@ -50,9 +50,9 @@ const Screen = ({ songName, artist, time }) => {
             >
                 <rect width="141" height="57" fill="#210537" rx="8"></rect>
             </svg>
-            <h2>{songName}</h2>
-            <h2>{artist}</h2>
-            <h1>{time}</h1>
+            <h2 className="text" id="songName">{songName}</h2>
+            <h2 className="text" id="artist">{artist}</h2>
+            <h1 className="text" id="time">{time}</h1>
         </div>
     );
 }
