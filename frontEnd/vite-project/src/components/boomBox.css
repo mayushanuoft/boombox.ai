@@ -1,0 +1,77 @@
+#container {
+  position: relative;
+  background-color: green;
+}
+
+#screen {
+  position: absolute;
+  top: 177px;
+  left: 290px;
+}
+
+#background {
+  position: absolute;
+}
+
+#tapeBox {
+  position: absolute;
+  top: 241px;
+  left: 290px;
+  position: relative;
+}
+
+#tapeReel {
+  position: absolute;
+  top: 260px;
+  left: 297px;
+}
+
+#tapeWheelLeft {
+  position: absolute;
+  top: 261px;
+  left: 299px;
+  transform: translate(-50%, -50%);
+  height: 44px;
+  width: 45px;
+  transform-origin: center;
+}
+
+#tapeWheelRight {
+  position: absolute;
+  top: 261px;
+  left: 376px;
+  transform: translate(-50%, -50%);
+  height: 44px;
+  width: 45px;
+  transform-origin: center;
+}
+
+.spin {
+  animation: spinAnimation 3s infinite linear; /* Adjust animation duration and timing function as needed */
+  transform-origin: center;
+}
+
+@keyframes spinAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#topSlider {
+  width: 150px;
+  position: absolute;
+  top: 350px;
+  left: 285px;
+  color: aliceblue;
+}
+
+#bottomSlider {
+  width: 150px;
+  position: absolute;
+  top: 383px;
+  left: 285px;
+  color: aliceblue;
+}
