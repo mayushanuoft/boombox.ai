@@ -1,8 +1,6 @@
 #container {
   position: relative;
   background-color: green;
-  top: 100px;
-  left: 100px;
 }
 
 #screen {
@@ -154,7 +152,7 @@
 #playButton {
   position: absolute;
   top: 99px;
-  left: 328px;
+  left: 324px;
 }
 #pauseButton {
   position: absolute;
@@ -193,4 +191,22 @@
   top: 96px;
   left: 653px;
   transform: rotate(-190deg);
+}
+.buttonAni {
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Add a transition for a smooth effect */
+}
+
+.buttonAni.clicked {
+  transform: scale(0.9); /* Shrink to 0.9 when clicked */
+  animation: growAnimation 0.3s forwards; /* Apply a grow animation */
+}
+
+@keyframes growAnimation {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
 }

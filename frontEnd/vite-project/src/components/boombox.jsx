@@ -365,8 +365,21 @@ const Buttons = () => {
     )
 }
 const PlayButton = () => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 300); // Reset the state after 300ms (adjust this duration as needed)
+    };
+
     return (
-        <div id="playButton">
+        <div
+            id="playButton"
+            className={`buttonAni ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClick}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -384,12 +397,25 @@ const PlayButton = () => {
                 ></path>
             </svg>
         </div>
+    );
 
-    )
-}
+};
 const PauseButton = () => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 300); // Reset the state after 300ms (adjust this duration as needed)
+    };
+
     return (
-        <div id="pauseButton">
+        <div
+            id="pauseButton"
+            className={`buttonAni ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClick}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -407,11 +433,24 @@ const PauseButton = () => {
                 ></path>
             </svg>
         </div>
-    )
-}
+    );
+};
 const BackwardButton = () => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 300); // Reset the state after 300ms (adjust this duration as needed)
+    };
+
     return (
-        <div id="backwardButton">
+        <div
+            id="backwardButton"
+            className={`buttonAni ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClick}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -429,11 +468,24 @@ const BackwardButton = () => {
                 ></path>
             </svg>
         </div>
-    )
-}
+    );
+};
 const ForwardButton = () => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 300); // Reset the state after 300ms (adjust this duration as needed)
+    };
+
     return (
-        <div id="forwardButton">
+        <div
+            id="forwardButton"
+            className={`buttonAni ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClick}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -451,8 +503,8 @@ const ForwardButton = () => {
                 ></path>
             </svg>
         </div>
-    )
-}
+    );
+};
 const DialBox = () => {
     return (
         <>
