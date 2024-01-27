@@ -17,7 +17,6 @@
   position: absolute;
   top: 241px;
   left: 290px;
-  position: relative;
 }
 
 #tapeReel {
@@ -74,4 +73,38 @@
   top: 383px;
   left: 285px;
   color: aliceblue;
+}
+
+#leftSpeakerRim {
+  position: absolute;
+  top: 175px;
+  left: 20px;
+}
+
+#rightSpeakerRim {
+  position: absolute;
+  top: 175px;
+  left: 465px;
+}
+
+#leftSpeakerRimBass {
+  position: absolute;
+  top: 250px;
+  left: 95px;
+  transition: transform 0.12s ease-in-out;
+}
+
+#rightSpeakerRimBass {
+  position: absolute;
+  top: 250px;
+  left: 540px;
+  transition: transform 0.12s ease-in-out;
+}
+
+.bass-active {
+  transform: scale(1.5);
+}
+
+.bass-unActive {
+  transform: scale(0.7);
 }

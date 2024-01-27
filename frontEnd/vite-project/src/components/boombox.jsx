@@ -1,4 +1,4 @@
-import { React, useState } from "react"
+import { React, useState, useEffect } from "react"
 import "./boomBox.css"
 import Slider from '@mui/material/Slider';
 
@@ -9,6 +9,7 @@ export const BoomBox = () => {
             <Screen />
             <Tape />
             <VolumeSliderBox />
+            <Speaker />
         </div>
     )
 }
@@ -202,7 +203,6 @@ const VolumeSliderBox = () => {
         </>
     );
 };
-
 const VolumeSlider = ({ id, start }) => {
     const [value, setValue] = useState(start);
     const handleChange = (event, newValue) => {
@@ -220,4 +220,92 @@ const VolumeSlider = ({ id, start }) => {
     );
 };
 
+const Speaker = () => {
+    const [randomInterval, setRandomInterval] = useState(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setRandomInterval(getRandomInt(100, 400));
+        }, 800);
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const getRandomInt = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    return (
+        <>
+            <SpeakerRim id={"leftSpeakerRim"} on={true} randomInterval={randomInterval} />
+            <SpeakerRim id={"rightSpeakerRim"} on={true} randomInterval={randomInterval} />
+        </>
+    );
+};
+
+const SpeakerRim = ({ id, on, randomInterval }) => {
+    console.log(randomInterval)
+    return (
+        <>
+            <div id={id}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="231"
+                    height="231"
+                    fill="none"
+                    viewBox="0 0 231 231"
+                >
+                    <circle cx="115.5" cy="115.5" r="115.5" fill="#fff"></circle>
+                    <circle cx="115.5" cy="115.5" r="115.5" fill="#fff"></circle>
+                    <circle cx="116" cy="115" r="101" fill="#000"></circle>
+                    <circle cx="116" cy="115" r="101" fill="#210537"></circle>
+                </svg>
+            </div>
+            <SpeakerBase id={`${id}Bass`} bass={on} randomInterval={randomInterval} />
+        </>
+    );
+};
+
+const SpeakerBase = ({ id, bass, randomInterval }) => {
+    const [isActive, setIsActive] = useState(true);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setIsActive(prevState => {
+                if (!bass) {
+                    return false; // If bass is false, isActive should always be false
+                } else {
+                    // If bass is true, isActive can be toggled
+                    return !prevState;
+                }
+            });
+        }, randomInterval);
+
+        // Set isActive initially based on bass value
+        setIsActive(bass);
+
+        // Cleanup function to clear the interval
+        return () => clearInterval(intervalId);
+
+    }, [randomInterval, bass]);
+
+    return (
+        <div id={id} className={isActive ? 'bass-active' : 'bass-inactive'}>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+                fill="none"
+                viewBox="0 0 80 80"
+            >
+                <circle cx="40" cy="40" r="40" fill="#fff"></circle>
+                <circle cx="40" cy="40" r="40" fill="#fff"></circle>
+                <circle cx="40.173" cy="39.827" r="34.978" fill="#000"></circle>
+                <circle cx="40.173" cy="39.827" r="34.978" fill="#210537"></circle>
+            </svg>
+        </div>
+    );
+};
+
+
+export default Speaker;
 
