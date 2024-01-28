@@ -28,7 +28,7 @@ const MySpotifyPlayer = () => {
     };
 
     const getOAuthToken = (callback) => {
-        const accessToken = 'BQA5GzR0qOQhxnpVjMwJVyPvLH98xrolf-U7uyWeSFrINMYTOlkLlnld4yuB5KMPrnpHb73E9ncBKZEsqTXB7Z19IH0qhqUJKBaT3S_G88ydOHkEzeCqk6d4fTA6DUjcYaMAMrdGmj6d1n2mj-ojY8d21TI9HUmxjhGtHLtnvtrfKfcz-mlWI0EDJUlXLdUIsRXZkYnU6wiq9M8Wn8UE0xWMJgnn';
+        const accessToken = 'BQAdP2Au7LJgRUXNGvCNwXbeU8XPsGVkD1c52nLykmbGw0NgggfLJ8jEqkyjsFq9TIfXCcsuKtZAiA3aHlvie9xSZYdOGsj0-9JmShTXzcDBhsr77wU';
         callback(accessToken);
     };
 
