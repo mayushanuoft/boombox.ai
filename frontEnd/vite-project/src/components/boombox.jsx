@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react"
 import "./boomBox.css"
 import Slider from '@mui/material/Slider';
+import SpotifyPlayer from 'react-spotify-web-playback';
 
 export const BoomBox = () => {
     return (
@@ -13,9 +14,39 @@ export const BoomBox = () => {
             <DialScreenDiv />
             <Buttons />
             <DialBox />
+            <MySpotifyPlayer />
         </div>
     )
 }
+
+const MySpotifyPlayer = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handlePlayPause = () => {
+        console.log(setIsPlaying)
+        setIsPlaying(prevState => !prevState);
+    };
+
+    const getOAuthToken = (callback) => {
+        const accessToken = 'BQA5GzR0qOQhxnpVjMwJVyPvLH98xrolf-U7uyWeSFrINMYTOlkLlnld4yuB5KMPrnpHb73E9ncBKZEsqTXB7Z19IH0qhqUJKBaT3S_G88ydOHkEzeCqk6d4fTA6DUjcYaMAMrdGmj6d1n2mj-ojY8d21TI9HUmxjhGtHLtnvtrfKfcz-mlWI0EDJUlXLdUIsRXZkYnU6wiq9M8Wn8UE0xWMJgnn';
+        callback(accessToken);
+    };
+
+    return (
+        <div>
+            <button onClick={handlePlayPause}>
+                {isPlaying ? 'Pause' : 'Play'}
+            </button>
+            <SpotifyPlayer
+                token=""
+                callback={state => console.log(state)}
+                getOAuthToken={getOAuthToken}
+                play={isPlaying}
+                uris={['spotify:track:2Xr1dTzJee307rmrkt8c0g']}
+            />
+        </div>
+    );
+};
 
 const Background = () => {
     return (
@@ -536,3 +567,5 @@ const Dial = ({ id }) => {
         </div>
     )
 }
+
+
